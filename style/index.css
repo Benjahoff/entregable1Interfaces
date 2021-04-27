@@ -1,0 +1,22 @@
+
+#main {
+  width: 800px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 20px;
+}
+#canvas {
+  border: 2px solid black;
+  background-color:white !important;
+  margin-top: 20px;
+}
+body{
+  background-color: #6dbcf0 !important;
+}
+.btn{
+  background-color: rgb(88, 95, 233) !important;
+}
+.color{
+  width: 7rem;
+  height: 2rem;
+}

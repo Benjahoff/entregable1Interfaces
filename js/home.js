@@ -2,8 +2,9 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let input = document.getElementById("input");
 let download = document.getElementById("download");
-let width = 825;
-let height = 600;
+let imgOrigin;
+let width = 700;
+let height = 500;
 canvas.height = height;
 canvas.width = width;
 ctx.lineWidth = 1;
@@ -15,7 +16,6 @@ var gomaTrazando = false;
 function dibujar(event) {
   x = oMousePos(canvas, event).x;
   y = oMousePos(canvas, event).y;
-  console.log("ruta: "+ruta , "goma: " +goma, "gomaTrazando: " +gomaTrazando);
 
   if (rutaOn == true) {
     ctx.lineTo(x, y);
@@ -42,14 +42,13 @@ canvas.addEventListener("mousedown", function () {
     ctx.beginPath();
     ctx.moveTo(x, y);
     canvas.addEventListener("mousemove", dibujar);
-  }
+  };
   if(ruta == true){
     rutaOn =true;
     ctx.beginPath();
     ctx.moveTo(x, y);
     canvas.addEventListener("mousemove", dibujar);
-  }
-   
+  };
 });
 canvas.addEventListener("mouseup", function () {
   rutaOn = false;
@@ -144,7 +143,7 @@ function applyFilter(filter) {
     }
     if (filter == "binarizacion") {
       let gray = 0.299 * r + 0.587 * g + 0.114 * b;
-      if (gray > 120) {
+      if (gray > 127) {
         r = 255;
         g = 255;
         b = 255;
@@ -157,6 +156,7 @@ function applyFilter(filter) {
       pixels[i * 4 + 1] = g;
       pixels[i * 4 + 2] = b;
     }
+    //Aumenta de 10% por click 
     if (filter == "brillo") {
       pixels[i * 4] = r + ( r * 0.1);
       pixels[i * 4 + 1] = g + ( g * 0.1);
@@ -255,6 +255,7 @@ let pixelMatriz = (imgData, x, y, matriz) => {
   p6 = imgData.data[ll] * matriz[2][0];
   p7 = imgData.data[lc] * matriz[2][1];
   p8 = imgData.data[lr] * matriz[2][2];
+  
   let red = (p0 + p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8);
 
   p0 = imgData.data[ul + 1] * matriz[0][0]
@@ -291,10 +292,10 @@ input.addEventListener("change", function () {
     imagen.src = reader.result;
     imagen.onload = () => {
       ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-      ctx.putImageData(ctx.getImageData(0, 0, canvas.width, canvas.height));
     };
   };
   reader.readAsDataURL(input.files[0]);
+  input.value ="";
 });
 download.addEventListener("click", function () {
   let link = document.createElement('a');

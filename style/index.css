@@ -5,18 +5,73 @@
   box-sizing: border-box;
   padding: 20px;
 }
+input[type=file]{ 
+  width: 9rem;
+  
+}
 #canvas {
   border: 2px solid black;
   background-color:white !important;
   margin-top: 20px;
+
 }
 body{
-  background-color: #6dbcf0 !important;
+  background-color: #AA3939 !important;
 }
 .btn{
-  background-color: rgb(88, 95, 233) !important;
+ background-color: grey !important;
 }
 .color{
   width: 7rem;
   height: 2rem;
+  margin-left: 10px;
+}
+.header {
+  overflow: hidden;
+  background-color: grey;
+  text-align: center;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  color: white;
+  text-align: center;
+}
+.containerStyle{
+  display:inline-block;
+  height:4rem;
+  width: 10rem;
+}
+
+.ctnlgb{
+  margin-top: 4px;
+  height: 4rem;
+  width: 35rem;
+  margin-left: 23rem;
+  border: 2px solid black;
+}
+.ctnlgb button {
+  margin-bottom: 3rem;
+}
+ .first-Btn{
+  margin-left: 1rem;
+} 
+.first-Filter{
+  margin-top: 3rem !important;
+}
+.ctnfilter{
+  width: 10rem;
+  margin-left: 8rem;
+}
+.ctnfilter button {
+  width: 6rem;
+  margin-top: 7px;
+  margin-left: 3rem;
+
+}
+.ctnfc{
+  display:flex;
 }
